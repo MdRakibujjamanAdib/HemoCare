@@ -5,11 +5,11 @@ import { Droplet, Heart, Activity, Users, Search, PlusCircle } from 'lucide-reac
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-red-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 flex flex-col-reverse lg:flex-row items-center gap-12">
-          
+
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left">
             <h1 className="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
@@ -36,9 +36,9 @@ const Home: React.FC = () => {
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
             <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
             <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1615461173975-eb6099e74496?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-              alt="Doctor and Patient" 
+            <img
+              src="https://www.hfh.com.vn/app/uploads/2025/10/inline-images_lac_04501-jpg-scaled.webp"
+              alt="Doctor and Patient"
               className="relative rounded-3xl shadow-2xl z-10 w-full object-cover h-[400px] lg:h-[500px]"
             />
           </div>
@@ -99,29 +99,29 @@ const Home: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold mb-6">See How We Save Lives</h2>
               <p className="text-slate-300 mb-8 text-lg">
-                Watch our inspiring stories of donors and patients. Every drop counts, and your contribution can bring a smile to someone's face. 
+                Watch our inspiring stories of donors and patients. Every drop counts, and your contribution can bring a smile to someone's face.
               </p>
               <div className="flex flex-col space-y-4">
-                 <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-bold">1</div>
-                    <p>Register as a donor in 2 minutes.</p>
-                 </div>
-                 <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-bold">2</div>
-                    <p>Get notified when someone needs blood near you.</p>
-                 </div>
-                 <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-bold">3</div>
-                    <p>Donate and become a hero.</p>
-                 </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-bold">1</div>
+                  <p>Register as a donor in 2 minutes.</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-bold">2</div>
+                  <p>Get notified when someone needs blood near you.</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center font-bold">3</div>
+                  <p>Donate and become a hero.</p>
+                </div>
               </div>
             </div>
-            
+
             <div className="relative aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700 group cursor-pointer">
               {/* Placeholder for Video - Using an image with a play button overlay */}
-              <img 
-                src="https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                alt="Blood Donation Video Thumbnail" 
+              <img
+                src="https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Blood Donation Video Thumbnail"
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-300"
               />
               <div className="absolute inset-0 flex items-center justify-center">
