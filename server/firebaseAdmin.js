@@ -12,7 +12,7 @@ if (process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
             'base64'
         ).toString('utf8');
         serviceAccount = JSON.parse(decoded);
-        console.log('✅ Firebase service account loaded from environment variable');
+        // console.log('✅ Firebase service account loaded from environment variable');
     } catch (error) {
         console.error('❌ Failed to decode FIREBASE_SERVICE_ACCOUNT_BASE64:', error.message);
     }
@@ -24,13 +24,13 @@ else if (process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_CLIENT_EMAIL &&
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
     };
-    console.log('✅ Firebase service account loaded from individual environment variables');
+    // console.log('✅ Firebase service account loaded from individual environment variables');
 }
 // Local development: Use serviceAccountKey.json file
 else {
     try {
         serviceAccount = require('./serviceAccountKey.json');
-        console.log('✅ Firebase service account loaded from serviceAccountKey.json');
+        // console.log('✅ Firebase service account loaded from serviceAccountKey.json');
     } catch (error) {
         console.warn('⚠️ Firebase service account not found. Admin features will not work.');
         console.warn('   For local development: Add serviceAccountKey.json to /server');
@@ -45,7 +45,7 @@ if (serviceAccount) {
             credential: admin.credential.cert(serviceAccount)
         });
         isInitialized = true;
-        console.log('✅ Firebase Admin initialized successfully');
+        // console.log('✅ Firebase Admin initialized successfully');
     } catch (error) {
         console.error('❌ Failed to initialize Firebase Admin:', error.message);
     }

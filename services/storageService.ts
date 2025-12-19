@@ -26,7 +26,7 @@ export const seedDatabase = async () => {
   // Check if doctors exist before seeding
   const doctorsSnapshot = await getDocs(collection(db, COLLECTIONS.DOCTORS));
   if (doctorsSnapshot.empty) {
-    console.log("Seeding Doctors...");
+    // console.log("Seeding Doctors...");
     for (const docData of MOCK_DOCTORS) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { id, ...data } = docData; // Remove ID to let Firestore generate one
@@ -37,7 +37,7 @@ export const seedDatabase = async () => {
   // Check if hospitals exist before seeding
   const hospitalsSnapshot = await getDocs(collection(db, COLLECTIONS.HOSPITALS));
   if (hospitalsSnapshot.empty) {
-    console.log("Seeding Hospitals...");
+    // console.log("Seeding Hospitals...");
     for (const hospData of MOCK_HOSPITALS) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { id, ...data } = hospData; // Remove ID to let Firestore generate one
