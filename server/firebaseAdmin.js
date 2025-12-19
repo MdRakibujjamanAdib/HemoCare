@@ -1,36 +1,61 @@
 const admin = require("firebase-admin");
-const path = require("path");
-const fs = require("fs");
+require('dotenv').config();
 
-try {
-    const serviceAccountPath = path.join(__dirname, "serviceAccountKey.json");
+let serviceAccount;
+let isInitialized = false;
 
-    if (fs.existsSync(serviceAccountPath)) {
-        const serviceAccount = require(serviceAccountPath);
+// Try to get service account from environment variable (for Vercel deployment)
+if (process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
+    try {
+        const decoded = Buffer.from(
+            process.env.FIREBASE_SERVICE_ACCOUNT_BASE64,
+            'base64'
+        ).toString('utf8');
+        serviceAccount = JSON.parse(decoded);
+        console.log('✅ Firebase service account loaded from environment variable');
+    } catch (error) {
+        console.error('❌ Failed to decode FIREBASE_SERVICE_ACCOUNT_BASE64:', error.message);
+    }
+}
+// Alternative: Use individual environment variables
+else if (process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_CLIENT_EMAIL && process.env.FIREBASE_PRIVATE_KEY) {
+    serviceAccount = {
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+    };
+    console.log('✅ Firebase service account loaded from individual environment variables');
+}
+// Local development: Use serviceAccountKey.json file
+else {
+    try {
+        serviceAccount = require('./serviceAccountKey.json');
+        console.log('✅ Firebase service account loaded from serviceAccountKey.json');
+    } catch (error) {
+        console.warn('⚠️ Firebase service account not found. Admin features will not work.');
+        console.warn('   For local development: Add serviceAccountKey.json to /server');
+        console.warn('   For Vercel: Set FIREBASE_SERVICE_ACCOUNT_BASE64 environment variable');
+    }
+}
+
+// Initialize Firebase Admin if service account is available
+if (serviceAccount) {
+    try {
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount)
         });
-        console.log("Firebase Admin Initialized with Service Account");
-    } else {
-        console.warn("WARNING: serviceAccountKey.json not found in server directory.");
-        console.warn("Admin operations will fail until text key is provided.");
-        // Fallback or initialization without creds (won't work for Firestore access usually)
-        // admin.initializeApp(); 
     }
-} catch (error) {
-    console.error("Error initializing Firebase Admin:", error);
-}
 
 let db = {
-    collection: () => ({ add: () => Promise.reject("Firebase not initialized") })
-};
-let auth = {
-    verifyIdToken: () => Promise.reject("Firebase not initialized")
-};
+        collection: () => ({ add: () => Promise.reject("Firebase not initialized") })
+    };
+    let auth = {
+        verifyIdToken: () => Promise.reject("Firebase not initialized")
+    };
 
-if (admin.apps.length > 0) {
-    db = admin.firestore();
-    auth = admin.auth();
-}
+    if (admin.apps.length > 0) {
+        db = admin.firestore();
+        auth = admin.auth();
+    }
 
-module.exports = { db, auth, admin };
+    module.exports = { db, auth, admin };
