@@ -44,18 +44,14 @@ if (serviceAccount) {
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount)
         });
+        isInitialized = true;
+        console.log('✅ Firebase Admin initialized successfully');
+    } catch (error) {
+        console.error('❌ Failed to initialize Firebase Admin:', error.message);
     }
+}
 
-let db = {
-        collection: () => ({ add: () => Promise.reject("Firebase not initialized") })
-    };
-    let auth = {
-        verifyIdToken: () => Promise.reject("Firebase not initialized")
-    };
+const db = isInitialized ? admin.firestore() : null;
+const auth = isInitialized ? admin.auth() : null;
 
-    if (admin.apps.length > 0) {
-        db = admin.firestore();
-        auth = admin.auth();
-    }
-
-    module.exports = { db, auth, admin };
+module.exports = { db, auth };
