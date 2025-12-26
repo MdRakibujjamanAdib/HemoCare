@@ -1,5 +1,7 @@
 import { getAuth } from 'firebase/auth';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 const getHeaders = async () => {
     const auth = getAuth();
     const user = auth.currentUser;
@@ -16,13 +18,13 @@ const getHeaders = async () => {
 export const api = {
     get: async (url: string) => {
         const headers = await getHeaders();
-        const response = await fetch(`/api${url}`, { method: 'GET', headers });
+        const response = await fetch(`${API_BASE_URL}${url}`, { method: 'GET', headers });
         if (!response.ok) throw new Error('API request failed');
         return response.json();
     },
     post: async (url: string, data: any) => {
         const headers = await getHeaders();
-        const response = await fetch(`/api${url}`, {
+        const response = await fetch(`${API_BASE_URL}${url}`, {
             method: 'POST',
             headers,
             body: JSON.stringify(data),
@@ -32,7 +34,7 @@ export const api = {
     },
     put: async (url: string, data: any) => {
         const headers = await getHeaders();
-        const response = await fetch(`/api${url}`, {
+        const response = await fetch(`${API_BASE_URL}${url}`, {
             method: 'PUT',
             headers,
             body: JSON.stringify(data),
@@ -42,7 +44,7 @@ export const api = {
     },
     delete: async (url: string) => {
         const headers = await getHeaders();
-        const response = await fetch(`/api${url}`, { method: 'DELETE', headers });
+        const response = await fetch(`${API_BASE_URL}${url}`, { method: 'DELETE', headers });
         if (!response.ok) throw new Error('API request failed');
         return response.json();
     },
