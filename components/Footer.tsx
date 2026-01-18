@@ -42,11 +42,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-red-500" />
-                <span>+880 1700-000000</span>
+                <span>+880 1410-805031</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-red-500" />
-                <span>support@hemocarebd.com</span>
+                <span>hemocarehubbd@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-semibold mb-4 uppercase text-sm tracking-wider">Follow Us</h3>
             <div className="flex space-x-4 mb-6">
-              <a href="#" className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61586815222134" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
                 <Facebook size={20} />
               </a>
               <a href="#" className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">

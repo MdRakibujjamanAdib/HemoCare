@@ -117,21 +117,14 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            <div className="relative aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700 group cursor-pointer">
-              {/* Placeholder for Video - Using an image with a play button overlay */}
-              <img
-                src="https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Blood Donation Video Thumbnail"
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-300"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-red-600/90 rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[24px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
-                </div>
-              </div>
-              <div className="absolute bottom-4 left-4">
-                <p className="font-semibold text-white bg-black/50 px-3 py-1 rounded-md text-sm">Healing Together: A Documentary</p>
-              </div>
+            <div className="relative aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/AD91HwaDo9E"
+                title="HemoCare Hub BD Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>
