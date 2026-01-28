@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow all operations for development
+    // Security is handled by the Express backend server with token verification
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
